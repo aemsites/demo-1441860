@@ -1,5 +1,5 @@
 mountpoints:
-  /: https://adobe.sharepoint.com/:f:/r/sites/HelixProjects/Shared%20Documents/sites/starter-content-commerce
+  /: https://adobe.sharepoint.com/:f:/r/sites/MagentoProduct/Shared%20Documents/Product%20Specific/AEM%20Assets%20integration/Demo%20environments/demo-1441860?csf=1&web=1&e=XByoh3
 
 folders:
   /products/: /products/default
