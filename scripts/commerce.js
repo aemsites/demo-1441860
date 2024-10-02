@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export, import/no-cycle */
-import { getConfigValue } from './configs.js';
+import { getConfigValue, getCookie } from './configs.js';
 import { getConsent } from './scripts.js';
 
 /* Common query fragments */
@@ -100,6 +100,28 @@ export const productDetailQuery = `query ProductQuery($sku: String!) {
 }
 ${priceFieldsFragment}`;
 
+export const variantsQuery = `
+query($sku: String!) {
+  variants(sku: $sku) {
+    variants {
+      product {
+        sku
+        name
+        inStock
+        images(roles: ["image"]) {
+          url
+        }
+        ...on SimpleProductView {
+          price {
+            final { amount { currency value } }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
 /* Common functionality */
 
 export async function performCatalogServiceQuery(query, variables) {
@@ -133,8 +155,7 @@ export async function performCatalogServiceQuery(query, variables) {
 }
 
 export function getSignInToken() {
-  // TODO: Implement in project
-  return '';
+  return getCookie('auth_dropin_user_token');
 }
 
 export async function performMonolithGraphQLQuery(query, variables, GET = true, USE_TOKEN = false) {
@@ -210,7 +231,7 @@ export function renderPrice(product, format, html = (strings, ...values) => stri
 
     if (finalMin.amount.value !== regularMin.amount.value) {
       return html`<${Fragment}>
-      <span class="price-final">${format(finalMin.amount.value)} - ${format(regularMin.amount.value)}</span> 
+      <span class="price-final">${format(finalMin.amount.value)} - ${format(regularMin.amount.value)}</span>
     </${Fragment}>`;
     }
 
