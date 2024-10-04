@@ -242,6 +242,7 @@ export default async function decorate(block) {
    */
 
   initializers.register(checkoutApi.initialize, {});
+  initializers.mount();
 
   /*
    * Render Containers

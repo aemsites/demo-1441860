@@ -57,6 +57,17 @@ const initialize = new Initializer({
 });
 
 export default async function initializeDropins() {
+  initializers.setImageParamKeys({
+    rotate: 'rotate',
+    crop: 'crop',
+    flip: 'flip',
+    size: 'size',
+    preferwebp: 'preferwebp',
+    height: 'height',
+//    width: 'width',
+    quality: 'quality',
+    smartcrop: 'smartcrop',
+  });
   // Register Initializers (Global)
   initializers.register(initialize, {});
   initializers.register(authApi.initialize, {});
