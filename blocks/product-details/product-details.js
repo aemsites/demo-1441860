@@ -193,6 +193,7 @@ export default async function decorate(block) {
     langDefinitions,
     models,
   });
+  initializers.mount();
 
   // Set Fetch Endpoint (Service)
   productApi.setEndpoint(await getConfigValue('commerce-endpoint'));
