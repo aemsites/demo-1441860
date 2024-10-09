@@ -64,7 +64,7 @@ export default async function initializeDropins() {
     size: 'size',
     preferwebp: 'preferwebp',
     height: 'height',
-//    width: 'width',
+    //    width: 'width',
     quality: 'quality',
     smartcrop: 'smartcrop',
   });
