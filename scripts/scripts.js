@@ -3,6 +3,7 @@ import { events } from '@dropins/tools/event-bus.js';
 import { getCartDataFromCache } from '@dropins/storefront-cart/api.js';
 import {
   buildBlock,
+  createOptimizedPicture as libCreateOptimizedPicture,
   decorateBlocks,
   decorateButtons,
   decorateIcons,
@@ -221,6 +222,7 @@ function isExternalImage(element, externalImageMarker) {
     const ext = getUrlExtension(element.getAttribute('href'));
     return ext && ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext.toLowerCase());
   }
+  return false;
 }
 /*
   * Appends query params to a URL
