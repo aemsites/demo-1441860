@@ -64,7 +64,8 @@ export default async function initializeDropins() {
     size: 'size',
     preferwebp: 'preferwebp',
     height: 'height',
-//    width: 'width',
+    // width breaks the image rendering for AEM asset images
+    // width: 'width',
     quality: 'quality',
     smartcrop: 'smartcrop',
   });
