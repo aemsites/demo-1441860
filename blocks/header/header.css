@@ -339,14 +339,6 @@ header .nav-search-panel input {
   border: 1px solid currentcolor;
   appearance: none;
 }
-
-/* Mini Cart  */
-
-.cart-mini-cart:not(:has(.cart-empty-cart)) {
-  max-height: 760px;
-  min-height: 360px;
-}
-
 /* Mini Cart  */
 .cart-mini-cart:not(:has(.cart-empty-cart)) {
     max-height: 760px;
