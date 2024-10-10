@@ -3,12 +3,18 @@
 // Drop-in Tools
 import { events } from '@dropins/tools/event-bus.js';
 
+import { render as cartProvider } from '@dropins/storefront-cart/render.js';
+import MiniCart from '@dropins/storefront-cart/containers/MiniCart.js';
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // TODO: Following two imports added for demo purpose (Auth Drop-In)
 import renderAuthCombine from './renderAuthCombine.js';
 import { renderAuthDropdown } from './renderAuthDropdown.js';
+
+// Drop-in Providers
+
+// Drop-in Containers
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -189,8 +195,20 @@ export default async function decorate(block) {
   });
 
   async function toggleMiniCart(state) {
-    const show = state ?? !minicartPanel.classList.contains('nav-tools-panel--show');
-    minicartPanel.classList.toggle('nav-tools-panel--show', show);
+    const show = state ?? !minicartPanel.classList.contains('nav-panel--show');
+
+    if (show) {
+      await cartProvider.render(MiniCart, {
+        routeEmptyCartCTA: () => '/',
+        routeProduct: (product) => `/products/${product.url.urlKey}/${product.sku}`,
+        routeCart: () => '/cart',
+        routeCheckout: () => '/checkout',
+      })(minicartPanel);
+    } else {
+      minicartPanel.innerHTML = '';
+    }
+
+    minicartPanel.classList.toggle('nav-panel--show', show);
   }
 
   cartButton.addEventListener('click', () => toggleMiniCart());
