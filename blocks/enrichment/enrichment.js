@@ -8,7 +8,7 @@ export default async function decorate(block) {
 
   try {
     const filters = {};
-    if (type === 'product') {
+    if (type === 'Product') {
       const productSku = getSkuFromUrl();
       if (!productSku) {
         throw new Error('No product SKU found in URL');
