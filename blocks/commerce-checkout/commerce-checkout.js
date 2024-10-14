@@ -212,6 +212,7 @@ function handleCheckoutOrder(orderData, block) {
   window.history.pushState({}, '', `/order-status?orderRef=${encodedOrderRef}`);
 
   initializers.register(orderConfirmationApi.initialize, {});
+  initializers.mount();
 
   const onSignUpClick = async ({ inputsDefaultValueSet, addressesData }) => {
     const signUpForm = document.createElement('div');
