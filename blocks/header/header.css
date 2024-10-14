@@ -18,7 +18,7 @@ header nav {
   align-items: center;
   gap: 0 16px;
   margin: auto;
-  max-width: 1248px;
+  max-width: 1400px;
   height: var(--nav-height);
   padding: 0 24px;
   font-family: var(--type-base-font-family);
@@ -43,7 +43,7 @@ header nav[aria-expanded='true'] {
   }
 
   header nav[aria-expanded='true'] {
-    min-height: 0;
+    min-height: 16vh;
     overflow: visible;
   }
 }
@@ -339,12 +339,44 @@ header .nav-search-panel input {
   border: 1px solid currentcolor;
   appearance: none;
 }
-
 /* Mini Cart  */
-
 .cart-mini-cart:not(:has(.cart-empty-cart)) {
-  max-height: 760px;
-  min-height: 360px;
+    max-height: 760px;
+    min-height: 360px;
+}
+
+.cart-mini-cart__heading-text::after {
+    border-bottom: 2px solid var(--color-brand-600);
+    content: "";
+    display: block;
+    padding-top: 10px;
+    min-width: 84px;
+    width: fit-content;
+}
+
+.cart-mini-cart__heading .cart-mini-cart__heading-divider{
+    display: none;
+}
+
+.cart-mini-cart .cart-mini-cart__footer__ctas a {
+    font-size: var(--body-font-size-md);
+    width: auto;
+}
+
+.cart-mini-cart .cart-mini-cart__footer__ctas a.dropin-button--primary:hover {
+    background-color: var(--color-brand-600);
+}
+
+.cart-mini-cart .cart-mini-cart__footer__ctas a.dropin-button--primary:active {
+    background-color: var(--color-brand-700);
+}
+
+.cart-mini-cart .cart-empty-cart__actions a {
+    width: auto;
+}
+
+.cart-mini-cart .dropin-cart-item__remove {
+    color: var(--color-black-100);
 }
 
 /* If viewport height is below max, set max height to 90% of viewport */
@@ -356,6 +388,10 @@ header .nav-search-panel input {
 
 header .nav-search-input .search_autocomplete .popover-container {
   width: 100%;
+}
+
+header nav .nav-panel--show {
+    display: block;
 }
 
 @media (width >= 1024px) {
